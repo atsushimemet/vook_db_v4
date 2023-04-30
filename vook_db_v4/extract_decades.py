@@ -104,3 +104,18 @@ def extract_decades_only_pat_5(item_name: str):
         return (start, end)
     else:
         return None
+
+
+extract_decades_func_list = [
+    extract_decades_both_pat_1,
+    extract_decades_both_pat_2,
+    extract_decades_both_pat_3,
+    extract_decades_both_pat_4,
+    extract_decades_both_pat_5,
+    extract_decades_both_pat_6,
+    extract_decades_only_pat_1,
+    extract_decades_only_pat_2,
+    extract_decades_only_pat_3,
+    extract_decades_only_pat_4,
+    extract_decades_only_pat_5,
+]
