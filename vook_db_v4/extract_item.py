@@ -15,3 +15,6 @@ def extract_item_denim_jacket(item_name: str):
         return "denim jacket"
     else:
         return None
+
+
+extract_item_func_list = [extract_item_denim, extract_item_denim_jacket]
