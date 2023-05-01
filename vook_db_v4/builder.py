@@ -36,3 +36,31 @@ class AgeBuilder(AbstractBuilder):
             else:
                 l_extracted.append(None)
         return l_extracted
+
+
+@dataclass
+class ItemBuilder(AbstractBuilder):
+    col: pd.Series
+    extract_func_list: List[Callable[[str], str]]
+    validate_func: Callable[[str, str, Callable[[str], str]], None]
+
+    def extract(self):
+        l_extracted = []
+        for i, item_name in enumerate(self.col):
+            for func in self.extract_func_list:
+                if func(item_name):
+                    ret = func(item_name)
+                    break
+                else:
+                    continue
+            try:
+                ret
+            except NameError:
+                ret = None
+            self.validate_func(ret, item_name, func)
+            # 出力
+            if ret:
+                l_extracted.append(ret)
+            else:
+                l_extracted.append(None)
+        return l_extracted
