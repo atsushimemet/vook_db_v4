@@ -1,11 +1,11 @@
 import pytest
 
-from vook_db_v4.extract_decades import (
-    extract_decades_only_pat_1,
-    extract_decades_only_pat_2,
-    extract_decades_only_pat_3,
-    extract_decades_only_pat_4,
-    extract_decades_only_pat_5,
+from vook_db_v4.extract_age import (
+    extract_age_only_pat_1,
+    extract_age_only_pat_2,
+    extract_age_only_pat_3,
+    extract_age_only_pat_4,
+    extract_age_only_pat_5,
 )
 
 item_name_match = [
@@ -21,23 +21,23 @@ item_name_not_match = [
     for _ in range(len(item_name_match))
 ]
 
-extract_decades_func_list = [
-    extract_decades_only_pat_1,
-    extract_decades_only_pat_2,
-    extract_decades_only_pat_3,
-    extract_decades_only_pat_4,
-    extract_decades_only_pat_5,
+extract_age_func_list = [
+    extract_age_only_pat_1,
+    extract_age_only_pat_2,
+    extract_age_only_pat_3,
+    extract_age_only_pat_4,
+    extract_age_only_pat_5,
 ]
 
 parametrize_args_match = [
-    (v1, v2) for v1, v2 in zip(item_name_match, extract_decades_func_list)
+    (v1, v2) for v1, v2 in zip(item_name_match, extract_age_func_list)
 ]
 parametrize_args_not_match = [
-    (v1, v2) for v1, v2 in zip(item_name_not_match, extract_decades_func_list)
+    (v1, v2) for v1, v2 in zip(item_name_not_match, extract_age_func_list)
 ]
 
 
-class TestExtractDecades:
+class TestExtractAge:
     @pytest.mark.parametrize(
         "item_name,func",
         parametrize_args_match,
