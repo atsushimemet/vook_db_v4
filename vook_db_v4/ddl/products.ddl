@@ -14,5 +14,5 @@ CREATE TABLE `products` (
   FOREIGN KEY (`ages_id`) REFERENCES ages(`ages_id`),
   FOREIGN KEY (`brand_id`) REFERENCES brands(`brand_id`),
   FOREIGN KEY (`item_id`) REFERENCES items(`item_id`),
-  FOREIGN KEY (`line_id`) REFERENCES lines(`line_id`)
+  FOREIGN KEY (`line_id`) REFERENCES line(`line_id`)
 );
