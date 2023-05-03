@@ -1414,6 +1414,25 @@ docs = ["myst-parser", "pydata-sphinx-theme", "sphinx"]
 test = ["argcomplete (>=2.0)", "pre-commit", "pytest", "pytest-mock"]
 
 [[package]]
+name = "types-requests"
+version = "2.29.0.0"
+description = "Typing stubs for requests"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+types-urllib3 = "<1.27"
+
+[[package]]
+name = "types-urllib3"
+version = "1.26.25.12"
+description = "Typing stubs for urllib3"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "typing-extensions"
 version = "4.5.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -1521,7 +1540,7 @@ test = ["mypy", "pre-commit", "pytest", "pytest-asyncio", "websockets (>=10.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "55f71d5f9024608a3b5ec5ddf094d4fef48d01113d6b1f207b93cb16f6f03365"
+content-hash = "46d338e4794fc29a30b613eeeba476c271df5995c68c28c823f4c3042feaf5d6"
 
 [metadata.files]
 aiofiles = []
@@ -1779,6 +1798,8 @@ tomli = [
 ]
 tornado = []
 traitlets = []
+types-requests = []
+types-urllib3 = []
 typing-extensions = []
 tzdata = []
 uri-template = []
