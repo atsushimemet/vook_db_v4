@@ -64,9 +64,7 @@ def create_lines_raw(
     return lines_raw
 
 
-def main():
-    lines_raw = create_lines_raw(params)
-
+def create_lines(lines_raw: pd.DataFrame) -> pd.DataFrame:
     product_id_list = []
     product_name_list = []
     price_list = []
@@ -88,7 +86,12 @@ def main():
     tmp_df["status"] = ""
     tmp_df = tmp_df[TABLE_COLUMNS]
     lines = tmp_df.copy()
+    return lines
 
+
+def main():
+    lines_raw = create_lines_raw(params)
+    lines = create_lines(lines_raw)
     lines.to_csv(f"./data/output/{RUN_TIME}_products.csv", index=False)
 
 
