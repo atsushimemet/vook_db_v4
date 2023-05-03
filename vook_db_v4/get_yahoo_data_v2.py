@@ -91,6 +91,7 @@ def create_lines(lines_raw: pd.DataFrame) -> pd.DataFrame:
 def main():
     lines_raw = create_lines_raw(params)
     lines = create_lines(lines_raw)
+    lines = lines.drop_duplicates(subset=["product_name"])
     lines.to_csv("./data/output/products.csv", index=False)
 
 
