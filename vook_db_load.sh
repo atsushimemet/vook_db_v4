@@ -8,7 +8,7 @@ source ./env/database.conf
 # CSVファイルをMySQLのplatformsテーブルに挿入する
 mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/platforms.csv' 
-  INTO TABLE products 
+  INTO TABLE platforms 
   FIELDS TERMINATED BY ',' 
   ENCLOSED BY '\"' 
   LINES TERMINATED BY '\n' 
@@ -17,7 +17,7 @@ mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -
 # CSVファイルをMySQLのagesテーブルに挿入する
 mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/ages.csv' 
-  INTO TABLE products 
+  INTO TABLE ages 
   FIELDS TERMINATED BY ',' 
   ENCLOSED BY '\"' 
   LINES TERMINATED BY '\n' 
@@ -26,7 +26,7 @@ mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -
 # CSVファイルをMySQLのbrandsテーブルに挿入する
 mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/brands.csv' 
-  INTO TABLE products 
+  INTO TABLE brands 
   FIELDS TERMINATED BY ',' 
   ENCLOSED BY '\"' 
   LINES TERMINATED BY '\n' 
@@ -35,7 +35,7 @@ mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -
 # CSVファイルをMySQLのitemsテーブルに挿入する
 mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/items.csv' 
-  INTO TABLE products 
+  INTO TABLE items 
   FIELDS TERMINATED BY ',' 
   ENCLOSED BY '\"' 
   LINES TERMINATED BY '\n' 
@@ -44,7 +44,7 @@ mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -
 # CSVファイルをMySQLのlineテーブルに挿入する
 mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/line.csv' 
-  INTO TABLE products 
+  INTO TABLE line 
   FIELDS TERMINATED BY ',' 
   ENCLOSED BY '\"' 
   LINES TERMINATED BY '\n' 
