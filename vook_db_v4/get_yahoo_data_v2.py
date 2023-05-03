@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-import hashlib
 import json
 
 import pandas as pd
@@ -69,7 +68,7 @@ def create_lines(lines_raw: pd.DataFrame) -> pd.DataFrame:
     product_name_list = []
     price_list = []
     for _, row in lines_raw.iterrows():
-        product_id_list.append(hashlib.md5(str(row["itemCode"]).encode()).hexdigest())
+        product_id_list.append(row["itemCode"])
         product_name_list.append(row["itemName"])
         price_list.append(row["itemPrice"])
     tmp_cols = ["product_id", "product_name", "price"]
