@@ -83,7 +83,7 @@ def create_lines(lines_raw: pd.DataFrame) -> pd.DataFrame:
     tmp_df["item_id"] = ITEM_ID
     tmp_df["line_id"] = LINE_ID
     tmp_df["info_get_date"] = INFO_GET_DATE
-    tmp_df["status"] = ""
+    tmp_df["status"] = "S"
     tmp_df = tmp_df[TABLE_COLUMNS]
     lines = tmp_df.copy()
     return lines
@@ -92,7 +92,7 @@ def create_lines(lines_raw: pd.DataFrame) -> pd.DataFrame:
 def main():
     lines_raw = create_lines_raw(params)
     lines = create_lines(lines_raw)
-    lines.to_csv(f"./data/output/{RUN_TIME}_products.csv", index=False)
+    lines.to_csv("./data/output/products.csv", index=False)
 
 
 if __name__ == "__main__":
