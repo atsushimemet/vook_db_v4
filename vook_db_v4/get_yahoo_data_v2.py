@@ -7,6 +7,7 @@ import requests
 
 from vook_db_v4.config import (
     AGES_ID,
+    BASE_PATH,
     BRAND,
     BRAND_ID,
     INFO_GET_DATE,
@@ -58,7 +59,8 @@ def create_lines_raw(
             l_df.append(df)
     lines_raw = pd.concat(l_df, axis=0, ignore_index=True)
     lines_raw.to_csv(
-        f"./data/output/{RUN_TIME}_lines_raw_{BRAND}_{ITEM}_{LINE}.csv", index=False
+        BASE_PATH / f"data/output/{RUN_TIME}_lines_raw_{BRAND}_{ITEM}_{LINE}.csv",
+        index=False,
     )
     return lines_raw
 
@@ -92,7 +94,7 @@ def main():
     lines_raw = create_lines_raw(params)
     lines = create_lines(lines_raw)
     lines = lines.drop_duplicates(subset=["product_name"])
-    lines.to_csv("./data/output/products.csv", index=False)
+    lines.to_csv(BASE_PATH / "data/output/products.csv", index=False)
 
 
 if __name__ == "__main__":
