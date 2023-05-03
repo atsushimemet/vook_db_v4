@@ -3,4 +3,4 @@ __pycache__/
 data/output/*.csv
 local_config.py
 env/database.conf
-log/*.txt
+log/*.log
