@@ -1,6 +1,6 @@
 #!/bin/bash
 # データの前処理
-# python /home/ec2-user/vook_db_v4/vook_db_v4/get_yahoo_data_v2.py
+python /home/ec2-user/vook_db_v4/vook_db_v4/get_yahoo_data_v2.py
 
 # DB設定値を読み込み
 source /home/ec2-user/vook_db_v4/env/database.conf
