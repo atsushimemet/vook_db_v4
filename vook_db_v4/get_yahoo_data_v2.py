@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 import json
+import platform
 
 import pandas as pd
 import requests
@@ -58,10 +59,25 @@ def create_lines_raw(
             df = pd.DataFrame(l_hit, columns=WANT_ITEMS)
             l_df.append(df)
     lines_raw = pd.concat(l_df, axis=0, ignore_index=True)
-    lines_raw.to_csv(
-        BASE_PATH / f"data/output/{RUN_TIME}_lines_raw_{BRAND}_{ITEM}_{LINE}.csv",
-        index=False,
-    )
+
+    if platform.system() == "Darwin":
+        print(BASE_PATH / f"data/output/{RUN_TIME}_lines_raw_{BRAND}_{ITEM}_{LINE}.csv")
+        lines_raw.to_csv(
+            BASE_PATH / f"data/output/{RUN_TIME}_lines_raw_{BRAND}_{ITEM}_{LINE}.csv",
+            index=False,
+        )
+    elif platform.system() == "Linux":
+        print(
+            BASE_PATH
+            / "vook_db_v4"
+            / f"data/output/{RUN_TIME}_lines_raw_{BRAND}_{ITEM}_{LINE}.csv"
+        )
+        lines_raw.to_csv(
+            BASE_PATH
+            / "vook_db_v4"
+            / f"data/output/{RUN_TIME}_lines_raw_{BRAND}_{ITEM}_{LINE}.csv",
+            index=False,
+        )
     return lines_raw
 
 
@@ -94,7 +110,10 @@ def main():
     lines_raw = create_lines_raw(params)
     lines = create_lines(lines_raw)
     lines = lines.drop_duplicates(subset=["product_name"])
-    lines.to_csv(BASE_PATH / "data/output/products.csv", index=False)
+    if platform.system() == "Darwin":
+        lines.to_csv(BASE_PATH / "data/output/products.csv", index=False)
+    elif platform.system() == "Linux":
+        lines.to_csv(BASE_PATH / "vook_db_v4" / "data/output/products.csv", index=False)
 
 
 if __name__ == "__main__":
