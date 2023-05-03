@@ -6,7 +6,7 @@
 source ./env/database.conf
 
 # CSVファイルをMySQLのplatformsテーブルに挿入する
-mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} -e "
+mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/platforms.csv' 
   INTO TABLE products 
   FIELDS TERMINATED BY ',' 
