@@ -5,6 +5,12 @@
 # DB設定値を読み込み
 source ./env/database.conf
 
+# ログファイルの名前を設定する
+log_file="./log/vook_db_load_$(date +%Y%m%d%H%M%S).log"
+
+# ログファイルに開始時間を書き込む
+echo "Start time: $(date +%Y-%m-%d_%H:%M:%S)" >> "$log_file"
+
 # CSVファイルをMySQLのplatformsテーブルに挿入する
 mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/platforms.csv' 
@@ -60,3 +66,6 @@ mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -
   LINES TERMINATED BY '\n' 
   IGNORE 1 ROWS;
 "
+
+# ログファイルに終了時間を書き込む
+echo "End time: $(date +%Y-%m-%d_%H:%M:%S)" >> "$log_file"
