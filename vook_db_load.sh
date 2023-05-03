@@ -15,7 +15,7 @@ mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -
   IGNORE 1 ROWS;
 "
 # CSVファイルをMySQLのagesテーブルに挿入する
-mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} -e "
+mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/ages.csv' 
   INTO TABLE products 
   FIELDS TERMINATED BY ',' 
@@ -24,7 +24,7 @@ mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} -e "
   IGNORE 1 ROWS;
 "
 # CSVファイルをMySQLのbrandsテーブルに挿入する
-mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} -e "
+mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/brands.csv' 
   INTO TABLE products 
   FIELDS TERMINATED BY ',' 
@@ -33,7 +33,7 @@ mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} -e "
   IGNORE 1 ROWS;
 "
 # CSVファイルをMySQLのitemsテーブルに挿入する
-mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} -e "
+mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/items.csv' 
   INTO TABLE products 
   FIELDS TERMINATED BY ',' 
@@ -42,7 +42,7 @@ mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} -e "
   IGNORE 1 ROWS;
 "
 # CSVファイルをMySQLのlineテーブルに挿入する
-mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} -e "
+mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/line.csv' 
   INTO TABLE products 
   FIELDS TERMINATED BY ',' 
@@ -52,7 +52,7 @@ mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} -e "
 "
 
 # CSVファイルをMySQLのproductsテーブルに挿入する
-mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} -e "
+mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} --local-infile=1 ${DB_NAME} -e "
   LOAD DATA LOCAL INFILE './data/output/products.csv' 
   INTO TABLE products 
   FIELDS TERMINATED BY ',' 
