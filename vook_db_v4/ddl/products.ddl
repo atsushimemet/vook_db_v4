@@ -11,7 +11,7 @@ CREATE TABLE `products` (
   `status` ENUM("S","A","B","C","D"),
   PRIMARY KEY (`product_id`),
   FOREIGN KEY (`platform_id`) REFERENCES platforms(`platform_id`),
-  FOREIGN KEY (`ages_id`) REFERENCES ages(`ages_id`),
+  FOREIGN KEY (`age_id`) REFERENCES ages(`ages_id`),
   FOREIGN KEY (`brand_id`) REFERENCES brands(`brand_id`),
   FOREIGN KEY (`item_id`) REFERENCES items(`item_id`),
   FOREIGN KEY (`line_id`) REFERENCES line(`line_id`)
