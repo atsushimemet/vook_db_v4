@@ -24,10 +24,12 @@ from vook_db_v4.config import (
 )
 
 
-def main():
-    start_num = 1
-    step = 100
-    max_products = 1000
+def create_lines_raw(
+    params: dict,
+    max_products: int = 1000,
+    step: int = 100,
+    start_num: int = 1,
+) -> pd.DataFrame:
     l_df = []
     for inc in range(0, max_products, step):
         params["start"] = start_num + inc
@@ -38,13 +40,13 @@ def main():
             print("Bad request")
             break
         else:
-            res = json.loads(res.text)
-            if len(res["hits"]) == 0:
+            data = json.loads(res.text)
+            if len(data["hits"]) == 0:
                 print("If the number of returned items is 0, the loop ends.")
                 break
             print("Get Data")
             l_hit = []
-            for h in res["hits"]:
+            for h in data["hits"]:
                 l_hit.append(
                     (
                         h["index"],
@@ -59,6 +61,10 @@ def main():
     lines_raw.to_csv(
         f"./data/output/{RUN_TIME}_lines_raw_{BRAND}_{ITEM}_{LINE}.csv", index=False
     )
+    return lines_raw
+
+
+def create_lines(lines_raw: pd.DataFrame) -> pd.DataFrame:
     product_id_list = []
     product_name_list = []
     price_list = []
@@ -80,7 +86,12 @@ def main():
     tmp_df["status"] = ""
     tmp_df = tmp_df[TABLE_COLUMNS]
     lines = tmp_df.copy()
+    return lines
 
+
+def main():
+    lines_raw = create_lines_raw(params)
+    lines = create_lines(lines_raw)
     lines.to_csv(f"./data/output/{RUN_TIME}_products.csv", index=False)
 
 
