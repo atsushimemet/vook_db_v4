@@ -5,6 +5,7 @@ log_file="/home/ec2-user/vook_db_v4/log/vook_db_load_$(date +%Y%m%d%H%M%S).log"
 
 # ログファイルにデータ前処理開始時間を書き込む
 echo "Start time - get_yahoo_data_v2.py: $(date +%Y-%m-%d_%H:%M:%S)" >> "$log_file"
+source /home/ec2-user/vook_db_v4/.venv/bin/activate
 python /home/ec2-user/vook_db_v4/vook_db_v4/get_yahoo_data_v2.py
 # ログファイルにデータ前処理終了時間を書き込む
 echo "End time - get_yahoo_data_v2.py: $(date +%Y-%m-%d_%H:%M:%S)" >> "$log_file"
